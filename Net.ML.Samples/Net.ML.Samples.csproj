@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Utlis\Extentions\ExtensionsEntityFrameworkCore.cs" />
+    <Compile Remove="Utlis\Extentions\ExtensionsLinq2Db.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Release\net6.0\iris.data" />
+    <None Include="obj\Release\net6.0\iris_model.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML" Version="2.0.0" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+  </ItemGroup>
+
+</Project>
