@@ -4,7 +4,6 @@
 	{
 		static void Main(string[] args)
 		{
-
 			Run<IrisPredictionScenario.Test>();
 		}
 	}
