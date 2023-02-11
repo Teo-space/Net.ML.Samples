@@ -7,7 +7,6 @@ namespace Net.ML.Samples.IrisPredictionScenario
 
 	public record Key<TSource, TDest>();
 
-	//Dictionary<Key, object> d = new();
 
 	internal class Test : iRunnable
 	{
@@ -25,6 +24,7 @@ namespace Net.ML.Samples.IrisPredictionScenario
 				PetalLength = 0.2f,
 				PetalWidth = 5.1f,
 			}).Print(x => $"Predicted flower type is: {x.PredictedLabels}");
+			
 			predictionEngine
 			.Predict(new IrisData()
 			{
@@ -33,6 +33,7 @@ namespace Net.ML.Samples.IrisPredictionScenario
 				PetalLength = 0.2f,
 				PetalWidth = 5.1f,
 			}).Print(x => $"Predicted flower type is: {x.PredictedLabels}");
+			
 			predictionEngine
 			.Predict(new IrisData()
 			{
@@ -67,10 +68,12 @@ namespace Net.ML.Samples.IrisPredictionScenario
 					.Append(mlContext.MulticlassClassification.Trainers.SdcaNonCalibrated(labelColumnName: "Label", featureColumnName: "Features"))
 					.Append(mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel"))
 					.Fit(trainingDataView);
+					
 				print($"Trained");
 				mlContext.Model.Save(model, reader, modelPath);
 				print($"Saved");
 			}
+			
 			var engine = mlContext.Model.CreatePredictionEngine<TSrc, TDst>(model);
 			print($"Engine Created");
 			return engine;
